@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flask App</title>
+        {{ dropzone.load_css() }}
+        {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%; min-height: 400px;') }}
+        <!-- {{dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',custom_options='autoProcessQueue: false, addRemoveLinks: true,parallelUploads: 20,')}} -->
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    </head>
+    <body>           
+        <div class="container">
+            <h1>Crop Details!</h1>
+            <div class="row">
+              <div class="col" style="background-color:lavender;">
+                {{ dropzone.create(action='upload') }}
+                <button id="upload-btn">Upload</button>
+                {{ dropzone.load_js() }}
+                {{ dropzone.config(custom_init='dz = this;document.getElementById("upload-btn").addEventListener("click", function handler(e) {dz.processQueue();});',
+                                   custom_options='autoProcessQueue: false, addRemoveLinks: true, parallelUploads: 20,') }}
+                </div>
+              
+              <div class="col" style="background-color:lavender;">
+                <form action="/data" method="POST">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Name</label>
+                  <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>     
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Type/Category</label>
+                <select class="form-control" name="type" id="exampleFormControlSelect1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Duration</label>
+                <input type="text" class="form-control" name="duration" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Discription</label>
+              <textarea class="form-control" name="discription" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Prise</label>
+              <input type="text" class="form-control" name="prise" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Tags</label>
+              <input type="text" class="form-control" name="tags" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1">Slug</label>
+              <input type="text" class="form-control" name="slug" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <input type="submit">
+                </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
